@@ -3,6 +3,7 @@ import cors from 'cors'
 import {config} from 'dotenv'
 import mongoose from 'mongoose'
 import PostRouter from './routes/post.js'
+import UserRouter from './routes/user.js'
 import  bodyParser from 'body-parser'
 const app=express()
 //dotenv config
@@ -21,7 +22,7 @@ once('open',()=>console.log("Mongo Db Connected SuccesFully...."))
 app.use(cors())
 app.use(bodyParser.json())
 app.use('/memories/api/posts/', PostRouter)
-
+app.use('/memories/api/user/',UserRouter)
 app.get('/',(req,res)=>{
     res.send("Server Working Succesfully")
 })
