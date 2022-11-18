@@ -28,10 +28,11 @@ const UserSchema=mongoose.Schema({
     
 })
 
-userModel.pre('save',async function(){
+UserSchema.pre('save',async function(){
   if(this.password){
     const newpass=await bcrypt.hash(this.password,10)
     this.password=newpass
+    console.log("hash",newpass);
   }
 })
 

@@ -5,6 +5,10 @@ import slugify from 'slugify'
 import slug from 'slugify'
 
 const PostSchema = mongoose.Schema({
+    creater:{
+      type:mongoose.Types.ObjectId,
+      ref:'users'
+    },
     title: {
         type: String,
         required: true,

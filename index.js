@@ -15,11 +15,11 @@ const DB_URL=process.env.DB_URL
 mongoose.connect(DB_URL)
 mongoose.connection.
 once('open',()=>console.log("Mongo Db Connected SuccesFully...."))
-.on('error',()=>console.error("error:::",error))
+.on('error',(error)=>console.error("error:::",error))
 
 
 //middlewares
-app.use(cors())
+app.use(cors({origin:"http://127.0.0.1:3000"}))
 app.use(bodyParser.json())
 app.use('/memories/api/posts/', PostRouter)
 app.use('/memories/api/user/',UserRouter)
